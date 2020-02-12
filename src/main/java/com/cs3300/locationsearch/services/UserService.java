@@ -2,14 +2,14 @@ package com.cs3300.locationsearch.services;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public class PasswordService {
+public class UserService {
 	private BCryptPasswordEncoder encoder;
 	
-	public PasswordService () {
+	public UserService () {
 		this.encoder = new BCryptPasswordEncoder();
 	}
 	
-	public PasswordService (BCryptPasswordEncoder encoder) {
+	public UserService (BCryptPasswordEncoder encoder) {
 		this.encoder = encoder;
 	}
 	
@@ -18,7 +18,7 @@ public class PasswordService {
 	 * @param password
 	 * @return
 	 */
-	public String getHash(String password) {
+	public String encryptPassword(String password) {
 		return this.encoder.encode(password);
 	}
 	
@@ -28,7 +28,7 @@ public class PasswordService {
 	 * @param hash
 	 * @return
 	 */
-	public boolean isMatching(String pass, String hash) {
+	public boolean passwordMatchesHash(String pass, String hash) {
 		return encoder.matches(pass, hash);
 	}
 }

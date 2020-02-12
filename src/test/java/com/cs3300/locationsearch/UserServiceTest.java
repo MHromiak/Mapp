@@ -4,20 +4,20 @@ import java.io.IOException;
 
 import org.junit.*;
 
-import com.cs3300.locationsearch.services.PasswordService;
+import com.cs3300.locationsearch.services.UserService;
 
-public class PasswordServiceTest {
+public class UserServiceTest {
 	
-  PasswordService passService;
+  UserService userService;
 	
   @Before
   public void setUp() {
-	  this.passService = new PasswordService();
+	  this.userService = new UserService();
   }
   
   @After
   public void tearDown() {
-	  passService = null;
+	  userService = null;
   }
   
   /**
@@ -27,7 +27,7 @@ public class PasswordServiceTest {
   @Test
   public void testPassNotSameAsHash() throws IOException {
 	String pass = "test12";
-	String hashed = passService.getHash(pass);
+	String hashed = userService.encryptPassword(pass);
 	Assert.assertNotEquals(pass, hashed);
   }
   
@@ -38,7 +38,7 @@ public class PasswordServiceTest {
   @Test
   public void testPassMatchesHash() throws IOException {
 	  String pass = "test12";
-	  String hashed = passService.getHash(pass);
-	  Assert.assertTrue(passService.isMatching(pass, hashed));
+	  String hashed = userService.encryptPassword(pass);
+	  Assert.assertTrue(userService.passwordMatchesHash(pass, hashed));
   }
 }
