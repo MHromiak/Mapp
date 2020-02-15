@@ -1,9 +1,12 @@
 package com.cs3300.locationsearch.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class User {
+	private String username;
+	private String password;
 	private String email;
-	private String pass;
 }
