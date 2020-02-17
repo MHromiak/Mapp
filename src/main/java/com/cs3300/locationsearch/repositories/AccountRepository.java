@@ -19,26 +19,24 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
-import com.cs3300.locationsearch.model.User;
+import com.cs3300.locationsearch.model.Account;
 
-public class UserRepository {
+public class AccountRepository {
 	private FirebaseOptions options;
 	private Firestore db;
-	
-	// TODO: add method to get users by email
-	// BEFORE RUNNING, ENSURE YOU HAVE LOMBOK INSTALLED AND SET UP YOUR ENVIRONMENT VARIABELS
+
+	// BEFORE RUNNING, ENSURE YOU HAVE LOMBOK INSTALLED AND SET UP YOUR ENVIRONMENT
+	// VARIABELS
 	// ENVIRONMENT VARIABLES NEED PROJECT_ID AND SERVICE ACCOUNT KEY
-	
+
 	/**
 	 * Initialize the database.
 	 */
-	public UserRepository() {		
+	public AccountRepository() {
 		try {
 			this.options = FirebaseOptions.builder()
 					.setCredentials(GoogleCredentials.fromStream(new FileInputStream(System.getenv("SERVICE_ACCOUNT"))))
-					.setProjectId(System.getenv("PROJECT_ID"))
-					.build();
-			System.out.println(System.getenv("PROJECT_ID") + " ;; " + System.getenv("SERVICE_ACCOUNT"));
+					.setProjectId(System.getenv("PROJECT_ID")).build();
 		} catch (Exception e) {
 			System.out.println("Failed to initialize firestore options. Invalid credentials may have been provided");
 			e.printStackTrace();
@@ -46,71 +44,75 @@ public class UserRepository {
 		FirebaseApp.initializeApp(options);
 		this.db = FirestoreClient.getFirestore();
 	}
-	
+
 	/**
 	 * Add user to database
-	 * @param user
+	 * 
+	 * @param account
 	 * @throws Exception
 	 */
-	public void addUser(User user) throws Exception {
-		DocumentReference docRef = db.collection("users").document(user.getUsername());
+	public void addAccount(Account account) throws Exception {
+		DocumentReference docRef = db.collection("accounts").document(account.getUsername());
 		Map<String, Object> data = new HashMap<>();
-		data.put("username", user.getUsername());
-		data.put("password", user.getPassword());
-		data.put("email", user.getEmail());
+		data.put("username", account.getUsername());
+		data.put("password", account.getPassword());
+		data.put("email", account.getEmail());
 		ApiFuture<WriteResult> result = docRef.set(data);
 		System.out.println("Update time : " + result.get().getUpdateTime());
 	}
-	
+
 	/**
 	 * Get a specific user from the database (by Username)
-	 * @param user
-	 * @return a User with details if found or null if no user is found
+	 * 
+	 * @param account
+	 * @return an Account with details if found or null if no user is found
 	 * @throws Exception
 	 */
-	public User getUserByUsername(User user) throws Exception {
-		DocumentReference docRef = db.collection("users").document(user.getUsername());
+	public Account getAccountByUsername(Account account) throws Exception {
+		DocumentReference docRef = db.collection("accounts").document(account.getUsername());
 		ApiFuture<DocumentSnapshot> future = docRef.get();
 		DocumentSnapshot document = future.get();
 		if (document.exists()) {
-			User userFound = document.toObject(User.class);
+			Account userFound = document.toObject(Account.class);
 			return userFound;
 		} else {
 			return null;
 		}
 	}
-	
+
 	/**
-	 * Gets all users by an email - it returns on the first user found with
-	 * a specific email. Otherwise, it will return null if no user is found.
-	 * @param user
-	 * @return
+	 * Gets all account by an email - it returns on the first user found with a
+	 * specific email. Otherwise, it will return null if no user is found.
+	 * 
+	 * @param account
+	 * @return Account
 	 * @throws Exception
 	 */
-	public User getUserByEmail(User user) throws Exception {
-		CollectionReference users = db.collection("users");
-		Query query = users.whereEqualTo("email", user.getEmail());
+	public Account getAccountByEmail(Account account) throws Exception {
+		CollectionReference accounts = db.collection("accounts");
+		Query query = accounts.whereEqualTo("email", account.getEmail());
 		ApiFuture<QuerySnapshot> querySnapshot = query.get();
-		for (DocumentSnapshot document: querySnapshot.get().getDocuments()) {
-			return document.toObject(User.class);
+		for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
+			return document.toObject(Account.class);
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Get all users in the database.
-	 * @return List<User>
+	 * 
+	 * @return List<Account>
 	 * @throws Exception
 	 */
-	public List<User> getAllUsers() throws Exception {
-		ApiFuture<QuerySnapshot> query = db.collection("users").get();
+	public List<Account> getAllAccounts() throws Exception {
+		ApiFuture<QuerySnapshot> query = db.collection("accounts").get();
 		QuerySnapshot querySnapshot = query.get();
 		List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
-		List<User> users = new ArrayList<>();
+		List<Account> accounts = new ArrayList<>();
 		for (QueryDocumentSnapshot document : documents) {
-			User user = document.toObject(User.class);
-			users.add(user);
+			Account account = document.toObject(Account.class);
+			accounts.add(account);
 		}
-		return users;
+		return accounts;
 	}
 }
