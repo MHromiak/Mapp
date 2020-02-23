@@ -1,0 +1,51 @@
+.background {
+    background-color: #dfdaaa;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.rectangle {
+    background-color: #fffef0;
+    height: 380px;
+    width: 300px;
+    left: calc(50% - 125px);
+    top: calc(50% - 300px);
+    position: absolute;
+    border: 2px solid black;
+    text-align:center;
+}
+
+.icon {
+    height: 80px;
+    width: 80px;
+    left: 50%;
+    margin-top: 25px;
+}
+
+input{
+    border-color: black;
+    width: 220px;
+}
+
+.signup{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    background-color: #67b869;
+    border: None;
+    color: white;
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.login {
+    background-color: #0275d8;
+    border: None !important;
+    color: white;
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+}
