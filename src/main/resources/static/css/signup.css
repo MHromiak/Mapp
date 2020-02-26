@@ -39,3 +39,12 @@ input{
     height: 40px;
     border-radius: 10px;
 }
+
+.backtologin {
+    background-color: #0275d8;
+    border: None !important;
+    color: white;
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+}
