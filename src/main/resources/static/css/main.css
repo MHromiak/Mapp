@@ -1,0 +1,80 @@
+.background {
+    background-color: #dfdaaa;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.searchrectangle {
+    background-color: #fffef0;
+    height: cacl(5%);
+    width: calc(50%);
+    left: calc(25%);
+    top: calc(5%);
+    position: absolute;
+    border: 2px solid black;
+    text-align: left;
+    button-align: right;
+}
+
+.maprectangle {
+    background-color: #fffef0;
+    height: calc(70%);
+    width: calc(50%);
+    left: calc(25%);
+    top: calc(20%);
+    position: absolute;
+    border: 2px solid black;
+    text-align:center;
+}
+
+.resultsrectangle {
+    background-color: #fffef0;
+    height: calc(70%);
+    width: calc(20%);
+    left: calc(3%);
+    top: calc(20%);
+    position: absolute;
+    border: 2px solid black;
+    text-align:center;
+}
+
+.historyrectangle {
+    background-color: #fffef0;
+    height: calc(70%);
+    width: calc(20%);
+    left: calc(77%);
+    top: calc(20%);
+    position: absolute;
+    border: 2px solid black;
+    text-align:center;
+}
+
+input{
+    border-color: black;
+    width: calc(25%);
+    margin-left: calc(2%);
+    margin-right: calc(1%);
+    margin-top: calc(1%);    
+}
+
+.searchbutton{
+    display: block;
+    margin-left: calc(60%);
+    margin-bottom: calc(1%);
+    background-color: #67b869;
+    border: None;
+    color: white;
+    width: calc(25%);
+    height: 35px;
+    border-radius: 10px;
+}
+
+.backToLogin{
+	background: None;
+	margin-left: calc(85%);
+	margin-top: calc(1%);
+    border: None;
+    color: #0275d8;
+    text-decoration: underline;    
+}
