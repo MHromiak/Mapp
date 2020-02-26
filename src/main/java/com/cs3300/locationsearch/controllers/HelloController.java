@@ -11,4 +11,14 @@ public class HelloController {
 	public String index() {
 		return "index";
 	}
+
+	@RequestMapping("/signup")
+	public String signup() {
+		return "signup";
+	}
+
+	@RequestMapping("/main")
+	public String main() {
+		return "main";
+	}
 }
