@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
     <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Hello Spring</title>
+    <title>Welcome Page</title>
 
     <base href="/">
 
@@ -25,18 +25,9 @@
                     <input type="submit" value="Login" class="login">
                 </form>
 
-                <button class="signup">Sign up</button>
-
-                <!-- <form action="/action_page.php">
-                    <input type="text" id="email" name="email" placeholder="Email Address"><br><br>
-                    <input type="text" id="email" name="email" placeholder="Email"><br><br>
-                    <input type="text" id="username" name="username" placeholder="Username"><br><br>
-                    <input type="password" id="password" name="password" placeholder="Password"><br><br>
-                    <input type="password" id="repeat password" name="repeat password" placeholder="Repeat Password"><br><br>
-                    <input type="submit" value="Create new account">
-                </form> -->
+                <button class="signup" onclick="location.href='/signup'">Sign up</button>
                 
-                <a href="/mainpage/mainpage.html">Continue as guest</a>
+                <button onclick="location.href='/main'" class="continueAsGuest">Continue as guest</a>
             </div>
         </div>
     </body>

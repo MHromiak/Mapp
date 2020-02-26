@@ -49,3 +49,10 @@ input{
     height: 40px;
     border-radius: 10px;
 }
+
+.continueAsGuest {
+    background: None;
+    border: None;
+    color: #0275d8;
+    text-decoration: underline;
+}
