@@ -44,6 +44,22 @@ public class AccountService {
 			throw e;
 		}
 	}
+	
+	public boolean checkUser(Account account) {
+		try {
+			Account user = accRepo.getAccountByUsername(account);
+			return passwordMatchesHash(user.getPassword(), encryptPassword(account.getPassword()));	
+		} catch (Exception e) {
+			System.out.println("Failed to check user");
+			
+		}
+		return false;
+		
+	}
+	
+
+	
+	
 
 	/**
 	 * Encodes password. This uses bcrypt encryption as well as randomized salt.
