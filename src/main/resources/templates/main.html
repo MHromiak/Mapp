@@ -13,7 +13,31 @@
 
     </head>
 
-    <body>
-        <h1>This is main page</h1>
+    <body>     
+        <div id="background" class="background">    	
+
+    	 <div id="searchrectangle" class="searchrectangle">    	
+                <form action="/main.php">
+                    <input type="text" id="latitude" name="latitude" placeholder="latitude">
+                    <input type="text" id="longitute" name="longitute" placeholder="longitute">
+                    <input type="text" id="range" name="range" placeholder="range">                    
+                    <input type="submit" value="Search" class="searchbutton">
+                </form>
+         </div>
+         
+         <div id="maprectangle" class="maprectangle">
+            <h1>This is main page</h1>
+         </div>
+         
+          <div id="resultsrectangle" class="resultsrectangle">
+         	<h5>Search results:</h5>
+         </div>
+         
+         <div id="historyrectangle" class="historyrectangle">
+         	<h5>Suggested search queries:</h5>         	
+         </div>
+                
+         <button onclick="location.href='/'" class="backToLogin">Return to login page</a>	
+    
     </body>
 </html>
