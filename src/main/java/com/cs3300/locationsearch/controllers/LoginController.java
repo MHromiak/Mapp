@@ -12,13 +12,22 @@ import com.cs3300.locationsearch.services.AccountService;
 
 
 @Controller
+@RequestMapping("/submitLoginInfo/")
 public class LoginController {
 	
 	
+	/**
+	 * Microservice that gives status of user account in database
+	 * 
+	 * endpoint format: /submitLoginInfo?username={}&password={}
+	 * 
+	 * @param username
+	 * @param pass
+	 * @return true if user is in database and can be logged in. False otherwise
+	 */
 	
-	@RequestMapping("/submitLoginInfo/")
-	public boolean loginUser(@RequestParam(required = true) String username, 
-			@RequestParam(required = true) String pass) {
+	public boolean loginUser(@RequestParam(value="username", required = true) String username, 
+			@RequestParam(value="password", required = true) String pass) {
 		
 		Account account = new Account();
 		account.setEmail("Not needed for login");

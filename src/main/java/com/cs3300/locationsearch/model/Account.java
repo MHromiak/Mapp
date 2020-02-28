@@ -1,7 +1,5 @@
 package com.cs3300.locationsearch.model;
 
-import lombok.Getter;
-import lombok.Setter;
 
 
 public class Account {
