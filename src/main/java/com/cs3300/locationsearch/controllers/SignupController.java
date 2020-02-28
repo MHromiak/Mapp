@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cs3300.locationsearch.model.Account;
 import com.cs3300.locationsearch.model.ApiError;
@@ -24,7 +25,8 @@ public class SignupController {
 	}
 	
 	@PostMapping(value="/signup")
-	public String addUser(@RequestParam("email") String email, 
+	@ResponseBody
+	public String addAccount(@RequestParam("email") String email,
 			@RequestParam("username") String username, @RequestParam("password") String password) {
 		Account acc = new Account();
 		acc.setEmail(email);
@@ -37,7 +39,7 @@ public class SignupController {
 			ApiError apierror = new ApiError(HttpStatus.BAD_REQUEST, "Failed to add user: already exists!");
 			Gson gson = new Gson();
 			String error = gson.toJson(apierror);
-			return "fail";
+			return error;
 		}
 	}
 }

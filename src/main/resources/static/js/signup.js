@@ -8,9 +8,9 @@ function createAccount() {
 		$.ajax({
 			url: "/signup",
 			type: "POST",
-			data: { 'username': username, 'password': password, 'email': email },
+			data: { 'email': email, 'username': username, 'password': password },
 			success: function(dataFromServer) { successCallback(dataFromServer); },
-			error: function(dataFromServer) { failureCallback(dataFromServer) }
+			error: function(dataFromServer) { failureCallback(dataFromServer); }
 		});
 	} else {
 		alert("Error! fields are not valid! check if fields are empty! passwords must match!");
@@ -18,10 +18,15 @@ function createAccount() {
 }
 
 function failureCallback(data) {
-	alert("Error! Failed to create user");
+	alert("Error! Failed to connect to server!");
 }
 
-function successCallback(data) {
-	alert("response success");
-	window.location.href = "/";
+function successCallback(jsonData) {
+	if (jsonData === "success") {
+		alert("User added!");
+		window.location.href = "/"
+	} else {
+		let data = JSON.parse(jsonData);
+		alert(data.message);
+	}
 }
