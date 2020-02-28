@@ -1,10 +1,12 @@
 package com.cs3300.locationsearch.services;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.cs3300.locationsearch.model.Account;
 import com.cs3300.locationsearch.repositories.AccountRepository;
 
+@Service
 public class AccountService {
 	private BCryptPasswordEncoder encoder;
 	private AccountRepository accRepo;
@@ -24,8 +26,9 @@ public class AccountService {
 	 * the database.
 	 * 
 	 * @param account
+	 * @throws Exception 
 	 */
-	public void addUser(Account account) {
+	public void addUser(Account account) throws Exception {
 		account.setPassword(encryptPassword(account.getPassword()));
 		try {
 			if (accRepo.getAccountByEmail(account) == null && accRepo.getAccountByUsername(account) == null) {
@@ -38,6 +41,7 @@ public class AccountService {
 			// we can add actual logging later
 			System.out.println("Failed to add user");
 			e.printStackTrace();
+			throw e;
 		}
 	}
 

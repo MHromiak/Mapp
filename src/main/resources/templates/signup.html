@@ -11,6 +11,9 @@
 
     <link type="text/css" rel="stylesheet" href="/css/signup.css" th:href="@{/css/signup.css}" >
 
+	<script th:inline="javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+
+	<script th:inline="javascript" th:src="@{/js/signup.js}"></script>
     </head>
 
     <body>
@@ -19,17 +22,14 @@
                 <img src="/assets/globe.png" alt="LocationSearch" class="icon">
                 <br><br>
 
-                <form action="/action_page.php">
+                <form class="createAccountForm">
                     <input type="text" id="email" name="email" placeholder="Email Address"><br><br>                   
                     <input type="text" id="username" name="username" placeholder="Username"><br><br>
                     <input type="password" id="password" name="password" placeholder="Password"><br><br>
-                    <input type="password" id="repeat password" name="repeat password" placeholder="Repeat Password"><br><br>
-                    <input type="submit" value="Create Account" class="createaccount">
+                    <input type="password" id="repeatPassword" name="repeat password" placeholder="Repeat Password"><br><br>
                 </form>
-                
+                <button id="createaccount" class="createaccount" onclick="createAccount()">Create Account</button>
                 <button class="backtologin" onclick="location.href='/'">Back to login</button>
-                
-                
             </div>
         </div>
     </body>
