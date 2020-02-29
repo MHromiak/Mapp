@@ -12,11 +12,6 @@ public class HelloController {
 		return "index";
 	}
 
-	@RequestMapping("/signup")
-	public String signup() {
-		return "signup";
-	}
-
 	@RequestMapping("/main")
 	public String main() {
 		return "main";
