@@ -11,6 +11,7 @@ import com.cs3300.locationsearch.services.AccountService;
 
 
 @Controller
+@RequestMapping("/submitLoginInfo/")
 public class LoginController {
     
     @Autowired
@@ -31,7 +32,6 @@ public class LoginController {
             @RequestParam(value="password", required = true) String password) {
         
         Account account = new Account();
-        account.setEmail("Not needed for login");
         account.setPassword(password);
         account.setUsername(username);
         
