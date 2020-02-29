@@ -4,9 +4,9 @@ function login() {
   let valid = username && password;
   if (valid) {
 	  $.ajax({
-			url: "/submitLoginInfo?username="+username+"&password="+password,
-			type: "GET",
-			// data: { 'username': username, 'password': password },
+			url: "/submitLoginInfo",
+			type: "POST",
+			data: { 'username': username, 'password': password },
 			success: function(dataFromServer) { successCallback(dataFromServer); },
 			error: function(dataFromServer) { failureCallback(dataFromServer) }
 		});
@@ -20,6 +20,9 @@ function failureCallback(data) {
 }
 
 function successCallback(data) {
-	alert("response success");
-	window.location.href = "/";
+	if (data) {
+		window.location.href = "/main";
+	} else {
+		alert("Invalid username or password!");
+	}
 }
