@@ -1,11 +1,14 @@
 package com.cs3300.locationsearch.services;
 
+import org.springframework.stereotype.Service;
+
 import com.google.maps.GeoApiContext;
 import com.google.maps.NearbySearchRequest;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.PlacesSearchResponse;
 import com.google.maps.model.PlacesSearchResult;
 
+@Service
 public class GoogleMapsService {
 	
 	private GeoApiContext context;
