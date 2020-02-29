@@ -24,6 +24,15 @@ public class SignupController {
 		return "signup";
 	}
 	
+	/**
+	 * signup takes parameters email, username, and password from post request
+	 * returns a json string of the error response or "success"
+	 * 
+	 * @param email
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@PostMapping(value="/signup")
 	@ResponseBody
 	public String addAccount(@RequestParam("email") String email,

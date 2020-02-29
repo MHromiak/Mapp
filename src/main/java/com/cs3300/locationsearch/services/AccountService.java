@@ -56,10 +56,6 @@ public class AccountService {
 		return false;
 		
 	}
-	
-
-	
-	
 
 	/**
 	 * Encodes password. This uses bcrypt encryption as well as randomized salt.
