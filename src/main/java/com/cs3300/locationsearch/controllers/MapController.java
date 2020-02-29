@@ -3,12 +3,11 @@ package com.cs3300.locationsearch.controllers;
 
 import com.cs3300.locationsearch.services.GoogleMapsService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.google.maps.model.PlacesSearchResult;
 
@@ -18,6 +17,8 @@ import com.google.maps.model.PlacesSearchResult;
 @RequestMapping("/submitMapSearchInfo")
 public class MapController {
 	
+	@Autowired
+	GoogleMapsService maps;
 	
 	/**
 	 * Microservice that returns search results using given parameters
@@ -35,7 +36,6 @@ public class MapController {
 		double lat = Double.parseDouble(latitude);
 		double lon = Double.parseDouble(longitude);
 		int rad = Integer.parseInt(radius);
-		GoogleMapsService maps = new GoogleMapsService();
 		PlacesSearchResult[] places = maps.getRequestWithLatLongAndRadius(lat, lon, rad);
 		return places;
 		

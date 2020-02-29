@@ -1,6 +1,7 @@
 package com.cs3300.locationsearch.controllers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,8 @@ import com.cs3300.locationsearch.services.AccountService;
 @RequestMapping("/submitLoginInfo/")
 public class LoginController {
 	
+	@Autowired
+	AccountService accService;
 	
 	/**
 	 * Microservice that gives status of user account in database
@@ -34,8 +37,7 @@ public class LoginController {
 		account.setPassword(pass);
 		account.setUsername(username);
 		
-		AccountService serv = new AccountService();
-		boolean logged = serv.checkUser(account);
+		boolean logged = accService.checkUser(account);
 		return logged;
 		
 	}
