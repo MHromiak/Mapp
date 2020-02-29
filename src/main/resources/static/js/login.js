@@ -8,7 +8,7 @@ function login() {
 			type: "POST",
 			data: { 'username': username, 'password': password },
 			success: function(dataFromServer) { successCallback(dataFromServer); },
-			error: function(dataFromServer) { failureCallback(dataFromServer) }
+			error: function(dataFromServer) { failureCallback(dataFromServer); }
 		});
   } else {
 	  alert("Make sure username and password is not empty!");
