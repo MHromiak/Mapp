@@ -10,11 +10,11 @@
     height: cacl(5%);
     width: calc(50%);
     left: calc(25%);
-    top: calc(5%);
+    top: calc(10%);
     position: absolute;
     border: 2px solid black;
     text-align: left;
-    button-align: right;
+    display: flex;
 }
 
 .maprectangle {
@@ -55,14 +55,14 @@ input{
     border-color: black;
     width: calc(25%);
     margin-left: calc(2%);
-    margin-right: calc(1%);
-    margin-top: calc(1%);    
+    margin-right: calc(2%);
+    margin-top: calc(2%);    
 }
 
 .searchbutton{
     display: block;
-    margin-left: calc(60%);
     margin-bottom: calc(1%);
+    margin-top: calc(1%);
     background-color: #67b869;
     border: None;
     color: white;
