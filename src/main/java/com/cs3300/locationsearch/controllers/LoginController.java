@@ -11,7 +11,6 @@ import com.cs3300.locationsearch.services.AccountService;
 
 
 @Controller
-@RequestMapping("/submitLoginInfo/")
 public class LoginController {
     
     @Autowired
