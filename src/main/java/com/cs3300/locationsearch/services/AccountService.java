@@ -48,7 +48,7 @@ public class AccountService {
 	public boolean checkUser(Account account) {
 		try {
 			Account user = accRepo.getAccountByUsername(account);
-			return passwordMatchesHash(user.getPassword(), encryptPassword(account.getPassword()));	
+			return passwordMatchesHash(account.getPassword(), user.getPassword());	
 		} catch (Exception e) {
 			System.out.println("Failed to check user");
 			
@@ -69,6 +69,8 @@ public class AccountService {
 
 	/**
 	 * Checks if password string matches the hashed password
+	 * string pass should be user input (unencrypted) and hash is 
+	 * already hashed password.
 	 * 
 	 * @param pass
 	 * @param hash
