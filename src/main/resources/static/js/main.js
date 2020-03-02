@@ -53,6 +53,14 @@ function loadUserInputMap() {
   let lat = document.getElementById("latitude").value;
   let longitude = document.getElementById("longitute").value;
   let radius = document.getElementById("range").value;
+
+  let isEmpty = !lat || !longitude || !radius;
+  let isNotNumber = isNaN(lat) || isNaN(longitude) || isNaN(radius);
+  
+  if (isEmpty || isNotNumber) {
+	  alert('Please enter valid values for input!');
+	  return;
+  }
   
   let latlong = new google.maps.LatLng(lat, longitude);
   
