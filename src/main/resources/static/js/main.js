@@ -60,6 +60,10 @@ function loadUserInputMap() {
   if (isEmpty || isNotNumber) {
 	  alert('Please enter valid values for input!');
 	  return;
+  } else {
+	  // empty list view
+	  let resultlist = document.getElementById("resultslist");
+	  resultlist.innerHTML = "";
   }
   
   let latlong = new google.maps.LatLng(lat, longitude);
